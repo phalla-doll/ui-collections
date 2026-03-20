@@ -13,21 +13,43 @@ import { ClimateControl } from "@/components/climate-control";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] p-8 font-sans">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto justify-items-center items-start">
-        <AddToFolder />
-        <TeamInvite />
-        <SoundSettings />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
+        <div className="flex items-center justify-center w-full h-full">
+          <AddToFolder />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <TeamInvite />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <SoundSettings />
+        </div>
         
-        <EvCharging />
-        <Battery />
-        <DeviceStorage />
+        <div className="flex items-center justify-center w-full h-full">
+          <EvCharging />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <Battery />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <DeviceStorage />
+        </div>
         
-        <SmartLight />
-        <FaceId />
-        <ClimateControl />
+        <div className="flex items-center justify-center w-full h-full">
+          <SmartLight />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <FaceId />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <ClimateControl />
+        </div>
         
-        <RadioTuner />
-        <TrainingLoad />
+        <div className="flex items-center justify-center w-full h-full">
+          <RadioTuner />
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <TrainingLoad />
+        </div>
       </div>
     </main>
   );
