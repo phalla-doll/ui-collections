@@ -1,6 +1,33 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Volume2, Clock, X, TrendingUp, TrendingDown } from "lucide-react";
 
 export function SoundSettings() {
+  const [volume, setVolume] = useState(74);
+  const [levels, setLevels] = useState<number[]>(Array(32).fill(4));
+
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastUpdate = 0;
+    
+    const updateVisualizer = (timestamp: number) => {
+      if (timestamp - lastUpdate > 50) {
+        setLevels(prev => prev.map(() => {
+          const base = 4;
+          const randomPart = Math.random() * 20;
+          // Scale the random part by the volume percentage
+          return base + (randomPart * (volume / 100));
+        }));
+        lastUpdate = timestamp;
+      }
+      animationFrameId = requestAnimationFrame(updateVisualizer);
+    };
+    
+    animationFrameId = requestAnimationFrame(updateVisualizer);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [volume]);
+
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="bg-[#1c1c1e] rounded-[32px] p-6 w-[360px] text-white shadow-2xl border border-white/5">
@@ -10,14 +37,38 @@ export function SoundSettings() {
         </div>
 
         <div className="mb-8">
-          <div className="text-sm text-zinc-500 mb-4">Audio</div>
+          <div className="flex justify-between items-end mb-4">
+            <div className="text-sm text-zinc-500">Audio</div>
+            {/* Real-time Audio Visualizer */}
+            <div className="flex items-end h-6 gap-[2px] w-32">
+              {levels.map((level, idx) => (
+                <div
+                  key={idx}
+                  className="flex-1 bg-white rounded-t-[1px] transition-all duration-75"
+                  style={{ 
+                    height: `${level}px`, 
+                    opacity: volume === 0 ? 0.2 : 0.4 + (level/24)*0.6 
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          
           <div className="flex items-center gap-4">
             <Volume2 className="w-5 h-5 text-zinc-400" />
             <div className="flex-1 h-1.5 bg-zinc-800 rounded-full relative">
-              <div className="absolute left-0 top-0 bottom-0 w-[74%] bg-white rounded-full"></div>
-              <div className="absolute left-[74%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-md -ml-2"></div>
+              <div className="absolute left-0 top-0 bottom-0 bg-white rounded-full pointer-events-none" style={{ width: `${volume}%` }}></div>
+              <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-md -ml-2 pointer-events-none" style={{ left: `${volume}%` }}></div>
+              <input 
+                type="range" 
+                min="0" 
+                max="100" 
+                value={volume}
+                onChange={(e) => setVolume(Number(e.target.value))}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              />
             </div>
-            <span className="text-sm font-medium text-zinc-400">74%</span>
+            <span className="text-sm font-medium text-zinc-400 w-8 text-right">{volume}%</span>
           </div>
         </div>
 
