@@ -12,30 +12,22 @@ import { ClimateControl } from "@/components/climate-control";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] p-8 flex justify-center font-sans">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 max-w-[1400px] items-start">
-        {/* Column 1 */}
-        <div className="flex flex-col gap-12 items-center">
-          <AddToFolder />
-          <EvCharging />
-          <SmartLight />
-          <RadioTuner />
-        </div>
+    <main className="min-h-screen bg-[#0a0a0a] p-8 font-sans">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto justify-items-center items-start">
+        <AddToFolder />
+        <TeamInvite />
+        <SoundSettings />
         
-        {/* Column 2 */}
-        <div className="flex flex-col gap-12 items-center">
-          <TeamInvite />
-          <Battery />
-          <FaceId />
-          <TrainingLoad />
-        </div>
+        <EvCharging />
+        <Battery />
+        <DeviceStorage />
         
-        {/* Column 3 */}
-        <div className="flex flex-col gap-12 items-center">
-          <SoundSettings />
-          <DeviceStorage />
-          <ClimateControl />
-        </div>
+        <SmartLight />
+        <FaceId />
+        <ClimateControl />
+        
+        <RadioTuner />
+        <TrainingLoad />
       </div>
     </main>
   );
