@@ -111,8 +111,8 @@ export function SoundSettings() {
                 <TrendingUp className="w-4 h-4 text-zinc-500" />
                 <span className="text-sm font-medium text-zinc-300">Fade In</span>
               </div>
-              <div className="w-11 h-6 bg-zinc-800 rounded-full p-0.5 cursor-pointer transition-colors">
-                <div className="w-5 h-5 bg-zinc-500 rounded-full"></div>
+              <div className="w-12 h-7 bg-zinc-700 rounded-full p-1 cursor-pointer transition-colors shadow-inner">
+                <div className="w-5 h-5 bg-zinc-400 rounded-full shadow-sm"></div>
               </div>
             </div>
             <div className="flex items-center justify-between">
@@ -120,8 +120,8 @@ export function SoundSettings() {
                 <TrendingDown className="w-4 h-4 text-zinc-500" />
                 <span className="text-sm font-medium text-zinc-300">Fade Out</span>
               </div>
-              <div className="w-11 h-6 bg-white rounded-full p-0.5 cursor-pointer flex justify-end transition-colors">
-                <div className="w-5 h-5 bg-[#1c1c1e] rounded-full"></div>
+              <div className="w-12 h-7 bg-white rounded-full p-1 cursor-pointer flex justify-end transition-colors shadow-inner">
+                <div className="w-5 h-5 bg-[#1c1c1e] rounded-full shadow-sm"></div>
               </div>
             </div>
           </div>

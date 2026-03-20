@@ -4,8 +4,8 @@ export function Battery() {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="bg-[#141414] rounded-[32px] p-8 w-[360px] text-white shadow-2xl border border-white/5">
-        <div className="flex items-center gap-2 mb-4 text-zinc-300">
-          <Zap className="w-4 h-4" />
+        <div className="flex items-center gap-2 mb-4 text-[#4ade80]">
+          <Zap className="w-4 h-4 animate-pulse" fill="currentColor" />
           <span className="text-sm font-medium">Charging...</span>
         </div>
         
@@ -20,8 +20,8 @@ export function Battery() {
             <span>100</span>
           </div>
           <div className="h-14 bg-[#1c1c1e] rounded-2xl overflow-hidden relative border border-white/5 p-1.5 shadow-inner">
-            <div className="h-full w-[85%] bg-white rounded-xl shadow-[0_0_24px_rgba(255,255,255,0.6)] relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/50 rounded-xl"></div>
+            <div className="h-full w-[85%] bg-[#4ade80] rounded-xl shadow-[0_0_24px_rgba(74,222,128,0.4)] relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/30 rounded-xl"></div>
             </div>
           </div>
         </div>

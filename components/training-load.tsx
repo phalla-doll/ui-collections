@@ -1,10 +1,17 @@
+import { useMemo } from "react";
+
 export function TrainingLoad() {
   // Generate histogram data matching the visual curve
-  const bars = Array.from({ length: 48 }, (_, i) => {
-    const x = i / 48;
-    const bell = Math.sin(x * Math.PI);
-    return 20 + bell * 60 + Math.random() * 15;
-  });
+  const bars = useMemo(() => {
+    return Array.from({ length: 48 }, (_, i) => {
+      const x = i / 48;
+      const bell = Math.sin(x * Math.PI);
+      // Use a simple pseudo-random based on index for stable rendering
+      const pseudoRandom = (Math.sin(i * 12.9898) * 43758.5453) % 1;
+      const randomPositive = Math.abs(pseudoRandom);
+      return 20 + bell * 60 + randomPositive * 15;
+    });
+  }, []);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -27,21 +34,21 @@ export function TrainingLoad() {
         <div className="relative h-16 flex items-end gap-[2px] mb-3">
           {bars.map((h, i) => {
             // Gradient from green (130) to pink/red (-30)
-            const hue = 130 - (i / 48) * 160;
-            const color = `hsl(${hue}, 80%, 55%)`;
+            const hue = 110 - (i / 48) * 140;
+            const color = `hsl(${hue}, 90%, 55%)`;
             
             return (
               <div 
                 key={i} 
-                className="flex-1 rounded-[1px] opacity-90"
+                className="flex-1 rounded-[1px] opacity-100"
                 style={{ height: `${h}%`, backgroundColor: color }}
               ></div>
             );
           })}
           {/* Marker line */}
-          <div className="absolute top-0 bottom-0 w-[2px] bg-white left-[75%] shadow-[0_0_8px_rgba(255,255,255,0.8)] z-10">
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 border-t-[6px] border-t-white border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent"></div>
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-b-[6px] border-b-white border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent"></div>
+          <div className="absolute top-0 bottom-0 w-[2px] bg-[#e25c4a] left-[75%] shadow-[0_0_8px_rgba(226,92,74,0.8)] z-10">
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 border-t-[6px] border-t-[#e25c4a] border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent"></div>
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-b-[6px] border-b-[#e25c4a] border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent"></div>
           </div>
         </div>
         

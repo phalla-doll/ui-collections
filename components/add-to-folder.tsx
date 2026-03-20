@@ -11,7 +11,7 @@ export function AddToFolder() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="bg-[#1c1c1e] rounded-[32px] p-6 w-[380px] text-white shadow-2xl border border-white/5">
+      <div className="bg-[#1c1c1e] rounded-[32px] p-6 w-[360px] text-white shadow-2xl border border-white/5">
         <div className="flex justify-between items-start mb-1">
           <h2 className="text-lg font-semibold text-zinc-100">Add lineups to selected folders</h2>
           <button className="text-zinc-500 hover:text-white transition-colors"><X className="w-4 h-4" /></button>

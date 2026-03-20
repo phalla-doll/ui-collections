@@ -11,7 +11,7 @@ export function FaceId() {
             <div className="text-xs text-zinc-500">User Face ID Authentication</div>
           </div>
         </div>
-        <div className="w-12 h-7 bg-zinc-600 rounded-full p-1 cursor-pointer flex justify-end transition-colors">
+        <div className="w-12 h-7 bg-[#4ade80] rounded-full p-1 cursor-pointer flex justify-end transition-colors shadow-[0_0_10px_rgba(74,222,128,0.2)]">
           <div className="w-5 h-5 bg-white rounded-full shadow-sm"></div>
         </div>
       </div>
